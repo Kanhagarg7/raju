@@ -62,10 +62,10 @@ async def handle_hunt(event):
                 except:
                     await zzz(3, 5)
                     await kanha_bot.send_message(chat, "/hunt")
-        elif "Daily limit for battling" in event.raw_text:
+        elif "Daily limit for battling" in text:
             await zzz(randint(5,7))
             await kanha_bot.send_message(me, 'emd')
-            os.execl(sys.executable, sys.executable, *sys.argv)
+            hunt = false
 
 @kanha_bot.on(events.MessageEdited(chats=chat))
 async def cacther(event):
