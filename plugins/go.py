@@ -62,12 +62,6 @@ async def handle_hunt(event):
                 except:
                     await zzz(3, 5)
                     await kanha_bot.send_message(chat, "/hunt")
-        elif "Daily limit for battling" in text and hunt:
-            await zzz(randint(5,7))
-            await kanha_bot.send_message(me, 'emd')
-            global hunt 
-            hunt = False
-            
 
 @kanha_bot.on(events.MessageEdited(chats=chat))
 async def cacther(event):
@@ -87,7 +81,7 @@ async def cacther(event):
 async def stomp(event):
     if hunt:
         if "Daily limit for battling" in event.message.text and hunt:
-            await asyncio.sleep(3)
+            await zzz(3)
             global hunt
             hunt = False
 
