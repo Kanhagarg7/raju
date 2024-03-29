@@ -63,6 +63,12 @@ async def handle_hunt(event):
                     await zzz(3, 5)
                     await kanha_bot.send_message(chat, "/hunt")
 
+@kanha_bot.on(events.NewMessage(outgoing=True, pattern='.bstop'))
+async def stop(event):
+    await event.edit('stopped hexa battling')
+    global hunt
+    hunt = False
+
 @kanha_bot.on(events.MessageEdited(chats=chat))
 async def cacther(event):
     if hunt:
@@ -80,15 +86,11 @@ async def cacther(event):
                 await kanha_bot.send_message(chat, "/hunt")
 async def stomp(event):
     if hunt:
+        message = await kanha_bot.get_messages(chat, ids=event.message.id)
         if "Daily limit for battling" in event.message.text and hunt:
              await zzz(3)
-             await stop()
+             await stop(event)
 
-@kanha_bot.on(events.NewMessage(outgoing=True, pattern='.bstop'))
-async def stop(event):
-    await event.edit('stopped hexa battling')
-    global hunt
-    hunt = False
 
 @kanha_bot.on(events.NewMessage(chats=chat, incoming=True))
 async def handle_battle(event):
