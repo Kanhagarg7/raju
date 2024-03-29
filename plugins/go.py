@@ -79,9 +79,10 @@ async def cacther(event):
                 await zzz(1, 3)
                 await kanha_bot.send_message(chat, "/hunt")
 async def stomp(event):
-    if "Daily limit for battling" in event.message.text and hunt:
-         await zzz(3)
-         await stop()
+    if hunt:
+        if "Daily limit for battling" in event.message.text and hunt:
+             await zzz(3)
+             await stop()
 
 @kanha_bot.on(events.NewMessage(outgoing=True, pattern='.bstop'))
 async def stop(event):
