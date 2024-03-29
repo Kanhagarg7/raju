@@ -30,13 +30,13 @@ async def handle_hunt(event):
         text = event.message.text
         hun = True
         message = await kanha_bot.get_messages(chat, ids=event.message.id)
-        if "A shiny" in event.raw_text:
+        if "A shiny" in text and hunt:
             await message.click(text='Poke Balls')
             await zzz(randint(5, 7))
             await message.click(text='Ultra')
             await message.click(text='Great')
             pass
-        elif "TM" in event.raw_text:
+        elif "TM" in text and hunt:
             print(event.message.text)
             await zzz(randint(5, 7))
             x = await kanha_bot.send_message(chat, "/hunt")
@@ -62,10 +62,12 @@ async def handle_hunt(event):
                 except:
                     await zzz(3, 5)
                     await kanha_bot.send_message(chat, "/hunt")
-        elif "Daily limit for battling" in text:
+        elif "Daily limit for battling" in text and hunt:
             await zzz(randint(5,7))
             await kanha_bot.send_message(me, 'emd')
-            hunt = false
+            global hunt 
+            hunt = False
+            
 
 @kanha_bot.on(events.MessageEdited(chats=chat))
 async def cacther(event):
@@ -82,9 +84,16 @@ async def cacther(event):
             except:
                 await zzz(1, 3)
                 await kanha_bot.send_message(chat, "/hunt")
+async def stomp(event):
+    if hunt:
+        if "Daily limit for battling" in event.message.text and hunt:
+            await asyncio.sleep(3)
+            global hunt
+            hunt = False
 
 @kanha_bot.on(events.NewMessage(outgoing=True, pattern='.bstop'))
 async def stop(event):
+    await event.edit('stopped hexa battling')
     global hunt
     hunt = False
 
