@@ -5,7 +5,6 @@
 # PLease read the GNU Affero General Public License in
 # <https://github.com/Teamkanha/pykanha/blob/main/LICENSE>.
 
-from . import *
 
 
 def main():
